@@ -209,8 +209,6 @@ def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[], debug=False, i
     if len(gpu_ids) > 0:
         assert(torch.cuda.is_available())
         net.to(gpu_ids[0])
-        # if not amp:
-        # net = torch.nn.DataParallel(net, gpu_ids)  # multi-GPUs for non-AMP training
     if initialize_weights:
         init_weights(net, init_type, init_gain=init_gain, debug=debug)
     return net
@@ -499,8 +497,6 @@ class ReshapeF(nn.Module):
 class StridedConvF(nn.Module):
     def __init__(self, init_type='normal', init_gain=0.02, gpu_ids=[]):
         super().__init__()
-        # self.conv1 = nn.Conv2d(256, 128, 3, stride=2)
-        # self.conv2 = nn.Conv2d(128, 64, 3, stride=1)
         self.l2_norm = Normalize(2)
         self.mlps = {}
         self.moving_averages = {}
@@ -576,8 +572,6 @@ class PatchSampleF(nn.Module):
                 if patch_ids is not None:
                     patch_id = patch_ids[feat_id]
                 else:
-                    # torch.randperm produces cudaErrorIllegalAddress for newer versions of PyTorch. https://github.com/taesungp/contrastive-unpaired-translation/issues/83
-                    #patch_id = torch.randperm(feat_reshape.shape[1], device=feats[0].device)
                     patch_id = np.random.permutation(feat_reshape.shape[1])
                     patch_id = patch_id[:int(min(num_patches, patch_id.shape[0]))]  # .to(patch_ids.device)
                 patch_id = torch.tensor(patch_id, dtype=torch.long, device=feat.device)
@@ -595,8 +589,6 @@ class PatchSampleF(nn.Module):
             return_feats.append(x_sample)
         return return_feats, return_ids
 
-
-#from models.flow import MAF
 from models.bnaf import BNAFModel as BNAF
 from models.maf import MAFMOG, MAF
 from models.nsf import NSF
@@ -656,7 +648,6 @@ class PatchDensityEstimator(nn.Module):
             hidden_dim = self.nc
             mlp = nn.Sequential(
                 *[nn.Linear(input_nc, hidden_dim, bias=False), self.norm(hidden_dim), nn.ReLU(inplace=True),
-                  # nn.Linear(hidden_dim, hidden_dim, bias=False), self.norm(hidden_dim), nn.ReLU(inplace=True),
                   nn.Linear(hidden_dim, hidden_dim, bias=False),
                   self.norm(hidden_dim, affine=False) if self.opt.prj_norm == 'BN' else self.norm(hidden_dim)])
             if len(self.gpu_ids) > 0:
@@ -680,7 +671,6 @@ class PatchDensityEstimator(nn.Module):
 
 
     def forward(self, feats, num_patches=256, patch_ids=None, detach=False, cams=None, prj=False, EnCo=False):
-        #feats = feats.to(dtype=torch.float32)
         return_ids = []
         return_log_probs = []
         return_lens = []
@@ -689,8 +679,6 @@ class PatchDensityEstimator(nn.Module):
         if self.initialized.item() == 0:
             self.create_flow(feats)
             self.initialized.fill_(1)
-            # self.create_mlp(feats)
-            # self.create_prj(feats)
 
 
 
@@ -728,7 +716,6 @@ class PatchDensityEstimator(nn.Module):
 
                             if random_num_points > 0:
                                 points_random = torch.randperm(H * W, device=cam_b.device)[-random_num_points:]
-                                # points_random = points_sampled[indices[-random_num_points:]]
                                 patch_id = torch.cat([good_idx, points_random], dim=0)
                             else:
                                 patch_id = good_idx
@@ -765,7 +752,6 @@ class PatchDensityEstimator(nn.Module):
                 else:
                     patch_id = np.random.permutation(feat_reshape.shape[1])
                     patch_id = patch_id[:int(min(num_patches, patch_id.shape[0]))]  # .to(patch_ids.device)
-                # patch_id = torch.tensor(patch_id, dtype=torch.long, device=feat.device)
                 if isinstance(patch_id, torch.Tensor):
                     patch_id = patch_id.clone().detach().to(dtype=torch.long, device=feat.device)
                 else:
@@ -788,7 +774,6 @@ class PatchDensityEstimator(nn.Module):
                     patch_id = torch.tensor(filtered_patch_id, dtype=torch.long, device=feat.device)
                     x_sample = self.select_patches(x_sample, density_list)
 
-            # patch_id
             return_ids.append(patch_id)
 
             flow = getattr(self, 'flow_%d' % feat_id)
@@ -796,7 +781,6 @@ class PatchDensityEstimator(nn.Module):
             if detach:
                 x_sample = x_sample.detach()  # (256,256)
             log_probs = flow.log_probs(x_sample.float())
-            # assert len(log_probs) == B*num_patches
             return_log_probs.append(log_probs)
             return_lens.append(torch.tensor(feat_reshape.size(-1), dtype=torch.float32, device=feat.device))
 
@@ -858,9 +842,6 @@ class PatchDensityEstimator(nn.Module):
 
         data = np.array(probabilities).reshape(-1, 1)
 
-        # data = data[~np.isnan(data)]
-        # data = data[np.isfinite(data)]
-
         if len(data) == 0:
             return []
 
@@ -871,7 +852,6 @@ class PatchDensityEstimator(nn.Module):
             kmeans = KMeans(n_clusters=2, random_state=0, n_init=10).fit(data)
             threshold = np.min(kmeans.cluster_centers_)
         except:
-            # threshold = np.median(probabilities)
             return list(range(len(probabilities)))
 
         return np.where(probabilities < threshold)[0].tolist()
@@ -908,7 +888,6 @@ class PatchSampleWithDAGF(nn.Module):
             hidden_dim = self.nc
             mlp = nn.Sequential(
                 *[nn.Linear(input_nc, hidden_dim, bias=False), self.norm(hidden_dim), nn.ReLU(inplace=True),
-                  # nn.Linear(hidden_dim, hidden_dim, bias=False), self.norm(hidden_dim), nn.ReLU(inplace=True),
                   nn.Linear(hidden_dim, hidden_dim, bias=False),
                   self.norm(hidden_dim, affine=False) if self.opt.prj_norm == 'BN' else self.norm(hidden_dim)])
             if len(self.gpu_ids) > 0:
@@ -963,7 +942,6 @@ class PatchSampleWithDAGF(nn.Module):
 
                         if random_num_points > 0:
                             points_random = torch.randperm(H * W, device=cam_b.device)[-random_num_points:]
-                            # points_random = points_sampled[indices[-random_num_points:]]
                             patch_id = torch.cat([good_idx, points_random], dim=0)
                         else:
                             patch_id = good_idx
@@ -1444,7 +1422,7 @@ class ResnetGenerator(nn.Module):
                 model += [Upsample(ngf * mult),
                           nn.Conv2d(ngf * mult, int(ngf * mult / 2),
                                     kernel_size=3, stride=1,
-                                    padding=1,  # output_padding=1,
+                                    padding=1,
                                     bias=use_bias),
                           norm_layer(int(ngf * mult / 2)),
                           nn.ReLU(True)]

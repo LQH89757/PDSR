@@ -21,6 +21,10 @@ See our template model class 'template_model.py' for more details.
 import importlib
 from models.base_model import BaseModel
 
+MODEL_NAME_ALIASES = {
+    'decent_gan': 'pdsr_gan',
+}
+
 
 def find_model_using_name(model_name):
     """Import the module "models/[model_name]_model.py".
@@ -29,10 +33,11 @@ def find_model_using_name(model_name):
     be instantiated. It has to be a subclass of BaseModel,
     and it is case-insensitive.
     """
-    model_filename = "models." + model_name + "_model"
+    canonical_model_name = MODEL_NAME_ALIASES.get(model_name, model_name)
+    model_filename = "models." + canonical_model_name + "_model"
     modellib = importlib.import_module(model_filename)
     model = None
-    target_model_name = model_name.replace('_', '') + 'model'
+    target_model_name = canonical_model_name.replace('_', '') + 'model'
     for name, cls in modellib.__dict__.items():
         if name.lower() == target_model_name.lower() \
            and issubclass(cls, BaseModel):
