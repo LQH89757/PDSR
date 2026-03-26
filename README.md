@@ -3,11 +3,8 @@
 </h1>
 
 <p align="center">
-<b>Qinghua Lin</b>, Xuan Ren, Boqian Zhou, Junyi Wang, Xin Liu
+⭐ Qinghua Lin†, Xuan Ren†, Boqian Zhou, Junyi Wang, Xin Liu*
 </p>
-
-Qinghua Lin and Xuan Ren contributed equally to this work.
-
 <p align="center">
 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841526001234">📄 Paper</a>
 </p>
