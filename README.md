@@ -1,5 +1,16 @@
-# [MedIA 2026] Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness 
+<h1 align="center">
+[MedIA 2026] Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness
+</h1>
 
+<p align="center">
+<b>Qinghua Lin</b>, Xuan Ren, Boqian Zhou, Junyi Wang, Xin Liu
+</p>
+
+Qinghua Lin and Xuan Ren contributed equally to this work.
+
+<p align="center">
+<a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841526001234">📄 Paper</a>
+</p>
 
 ## :rocket: Overview
 
