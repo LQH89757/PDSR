@@ -48,7 +48,14 @@ cd ./PDSR_for_Training
 CUDA_VISIBLE_DEVICES=0 python3 train.py --dataroot datasets/dataset'name
 ```
 
-1. Testing
+2. Testing
+
+```
+cd ./PDSR_for_Inferencing
+```
+
+Place the trained checkpoints in the current directory
+
 ```sh
 CUDA_VISIBLE_DEVICES=0 python3 test.py --dataroot datasets/dataset'name
 ```
