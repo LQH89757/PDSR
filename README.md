@@ -1,7 +1,29 @@
-# PDSR
-Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness
+# [MedIA 2026] Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness 
 
-The page will be completed after the paper is formally accepted...
+## :rocket: Overview
+
+Here's an overview of the process behind our **PDSR** method:
+
+![Figure 1](./Image/figure1.png?raw=true)
+
+
+## 🛠️ Prepare your own dataset
+
+To get started with PDSR, follow the instructions below.
+
+1.  
+
+### :blue_book: Example Usage
+
+1. Training
+```sh
+CUDA_VISIBLE_DEVICES=0 python3 train.py --dataroot datasets/dataset'name
+```
+
+1. Testing
+```sh
+CUDA_VISIBLE_DEVICES=0 python3 test.py --dataroot datasets/dataset'name
+```
 
 # Datasets
 
