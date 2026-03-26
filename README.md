@@ -4,7 +4,7 @@
 
 Here's an overview of the process behind our **PDSR** method:
 
-![Figure 1](./Image/figure1.png?raw=true)
+![Figure 1](./Image/PDSR.png?raw=true)
 
 
 ## 🛠️ Prepare your own dataset
