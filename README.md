@@ -9,6 +9,11 @@
 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841526001234">📄 Paper</a>
 </p>
 
+## :fire: News
+
+- [2025/03/26] We have released part of the code, and the full version will be available soon.
+- [2026/03/24] Our paper has been accepted to MedIA.
+
 ## :rocket: Overview
 
 Here's a framework overview of our **PDSR** method:
