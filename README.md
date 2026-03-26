@@ -73,9 +73,9 @@ CUDA_VISIBLE_DEVICES=0 python3 test.py --dataroot datasets/dataset'name
 
 The test cases in PDSR can be obtained at the following link:
 
-[Baidu Cloud](https://pan.baidu.com/s/1UnBEJ6IlojNqJHA2XVdNVw )            Password: 4c4f
+🔗 [Baidu Cloud](https://pan.baidu.com/s/1UnBEJ6IlojNqJHA2XVdNVw?pwd=4c4f ) 
 
-[Google Cloud](https://drive.google.com/file/d/1wZDU2vc1SuSisKimzROM_xh-nxHwI8aY/view)
+🔗 [Google Cloud](https://drive.google.com/file/d/1wZDU2vc1SuSisKimzROM_xh-nxHwI8aY/view)
 
 ## :pushpin: Citation
 If you use PDSR in your work, please cite it using the following BibTeX:
