@@ -4,7 +4,9 @@
 
 Here's a framework overview of our **PDSR** method:
 
-![Figure 1](./Image/PDSR.png?raw=true)
+<p align="center">
+  <img src="./Image/PDSR.png" width="600"/>
+</p>
 
 
 ## 🛠️ Prepare your own dataset
