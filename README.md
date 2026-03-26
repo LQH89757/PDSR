@@ -11,7 +11,7 @@
 
 ## :fire: News
 
-- [2025/03/26] We have released part of the code, and the full version will be available soon.
+- [2026/03/26] We have released part of the code, and the full version will be available soon.
 - [2026/03/24] Our paper has been accepted to MedIA.
 
 ## :rocket: Overview
