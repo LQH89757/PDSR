@@ -2,7 +2,7 @@
 
 ## :rocket: Overview
 
-Here's an overview of the process behind our **PDSR** method:
+Here's a framework overview of our **PDSR** method:
 
 ![Figure 1](./Image/PDSR.png?raw=true)
 
