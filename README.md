@@ -13,7 +13,22 @@ Here's a framework overview of our **PDSR** method:
 
 To get started with PDSR, follow the instructions below.
 
-1.  
+```
+Your Dataset/
+├── trainA/
+│ ├── xxx.png
+│ ├── xxx.png
+│ └── ...
+├── trainB/
+│ ├── xxx.png
+│ └── ...
+├── testA/
+│ ├── xxx.png
+│ └── ...
+└── testB/
+├── xxx.png
+└── ...
+```
 
 ### :blue_book: Example Usage
 
