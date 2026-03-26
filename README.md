@@ -1,5 +1,6 @@
 # [MedIA 2026] Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness 
 
+
 ## :rocket: Overview
 
 Here's a framework overview of our **PDSR** method:
@@ -60,12 +61,7 @@ Place the trained checkpoints in the current directory
 CUDA_VISIBLE_DEVICES=0 python3 test.py --dataroot datasets/dataset'name
 ```
 
-
-
-
-
-
-# Datasets
+## 📁 Datasets
 
 The test cases in PDSR can be obtained at the following link:
 
@@ -73,5 +69,12 @@ The test cases in PDSR can be obtained at the following link:
 
 [Google Cloud](https://drive.google.com/file/d/1wZDU2vc1SuSisKimzROM_xh-nxHwI8aY/view)
 
-## Acknowledgement
+## :pushpin: Citation
+If you use PDSR in your work, please cite it using the following BibTeX:
+
+```bibtex
+Update coming soon
+```
+
+## 🙏 Acknowledgement
 We would like to express our sincere gratitude to the developers of the following projects for their valuable contributions: [Decent](https://github.com/Mid-Push/Decent), [EnCo](https://github.com/XiudingCai/EnCo-pytorch) and [CUT](https://github.com/taesungp/contrastive-unpaired-translation). This work builds upon and is inspired by these outstanding efforts.
