@@ -13,6 +13,13 @@ Here's a framework overview of our **PDSR** method:
 
 To get started with PDSR, follow the instructions below.
 
+1. Enter the data directory
+
+```
+cd ./PDSR_for_Training/datasets
+```
+
+2. Organize the data in the following format
 ```
 Your Dataset/
 ├── trainA/
@@ -33,6 +40,10 @@ Your Dataset/
 ### :blue_book: Example Usage
 
 1. Training
+```
+cd ./PDSR_for_Training
+```
+
 ```sh
 CUDA_VISIBLE_DEVICES=0 python3 train.py --dataroot datasets/dataset'name
 ```
