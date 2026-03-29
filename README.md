@@ -86,15 +86,13 @@ The test cases in PDSR can be obtained at the following link:
 If you use PDSR in your work, please cite it using the following BibTeX:
 
 ```bibtex
-@article{LIN2026104055,
-title = {Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness},
-journal = {Medical Image Analysis},
-pages = {104055},
-year = {2026},
-issn = {1361-8415},
-doi = {https://doi.org/10.1016/j.media.2026.104055},
-url = {https://www.sciencedirect.com/science/article/pii/S1361841526001234},
-author = {Qinghua Lin and Xuan Ren and Boqian Zhou and Junyi Wang and Xin Liu}
+@article{lin2026ultrasound,
+  title={Ultrasound Localization Microscopy Learned From Power Doppler by Uncertainty Frequency Density Estimation and Semantic Consistency Awareness},
+  author={Lin, Qinghua and Ren, Xuan and Zhou, Boqian and Wang, Junyi and Liu, Xin},
+  journal={Medical Image Analysis},
+  pages={104055},
+  year={2026},
+  publisher={Elsevier}
 }
 ```
 
